@@ -1,0 +1,7 @@
+I've been using the Framer agent, both inside the Framer UI and through Claude. It's the most capable design agent I've worked with so far. But out of the box it has a blind spot: it builds without checking whether your project already has styles defined.
+So I built a skill that fixes that.
+The framer-use skill does two things:
+It forces the agent to audit existing styles before creating anything new. If styles exist, it uses them. If they don't, it creates them first and then builds against those. For text styles specifically, it automatically defines breakpoints, so what gets built is responsive from the start.
+It also tightens up reference-based building. If you upload an image and ask it to recreate, you get a 98% accurate result in one shot. Without the skill, you get something close that still needs significant manual correction.
+I'll keep updating it as I use Framer more. If it gets too complex, I'll split it into focused modules.
+Grab it here and try it. Let me know how it goes.
