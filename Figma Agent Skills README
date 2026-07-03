@@ -1,0 +1,31 @@
+# figma-agent-skills
+
+Custom skills for the Figma agent (native to Figma, not Claude). These are separate from the Claude-side skills elsewhere in this repo (`figma-use`, `figma-generate-design`, etc.) which run through Claude's `use_figma` tool.
+
+## Why this folder is separate
+
+The Figma agent has its own tools built in, it doesn't need API instructions the way Claude does. So skills here are workflow and quality standards, not tool plumbing. They should never reference Claude-side skills, files, or tool names.
+
+## Format constraints (Figma's requirement, not a preference)
+
+- One skill = one standalone `.md` file. No subfolders, no `references/`, no `scripts/`, no `assets/`.
+- YAML frontmatter with `name` and `description`. The description is the trigger, be specific about when to use it.
+- Everything the agent needs must live in that single file.
+
+Reference: [Figma's custom skills docs](https://help.figma.com/hc/en-us/articles/40283639496599-Custom-skills-for-the-Figma-agent-and-Figma-Make)
+
+## Install
+
+Figma agent → Skills → Add skill → Upload file. Re-upload to update; there's no sync from this repo.
+
+## Skills
+
+| File | What it does |
+|---|---|
+| `recreate-from-image.md` | Rebuilds a reference image as a Figma frame matching layout, spacing, color, and type. Auto layout, contextual naming, capped 3-pass review against the source. |
+
+## Adding a new one
+
+1. Write the `.md` file directly, flat, no companion files.
+2. Test it in Figma before committing, if the agent doesn't trigger or follow it well, fix the description or steps and retest.
+3. Add a row to the table above.
